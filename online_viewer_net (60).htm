@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jualin Aja Freelancer Community - Open Recruitment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #E63946;
+            --dark-red: #C1121F;
+            --black: #0D0D0D;
+            --white: #FFFFFF;
+            --light-bg: #F8F9FA;
+            --text-dark: #2D3436;
+            --text-gray: #636E72;
+            --border-light: #E1E8ED;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--black) 0%, var(--primary-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--border-light);
+            background: var(--white);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary-red);
+            background: var(--primary-red);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-bg) 100%);
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-red) 0%, transparent 70%);
+            opacity: 0.1;
+            top: -100px;
+            right: -100px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--black) 0%, var(--primary-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            color: var(--white);
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(230, 57, 70, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .section-alt {
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--black);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-red), var(--dark-red));
+            border-radius: 2px;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 30px auto;
+            line-height: 1.8;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-red), var(--dark-red));
+        }
+
+        .benefit-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(230, 57, 70, 0.15);
+        }
+
+        .benefit-category {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .benefit-icon {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary-red);
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .benefit-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .benefit-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary-red);
+            border-radius: 50%;
+        }
+
+        /* Positions Table */
+        .positions-table {
+            width: 100%;
+            margin-top: 50px;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        .positions-table thead th {
+            background: var(--white);
+            padding: 18px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--primary-red);
+            font-size: 1rem;
+            border-bottom: 3px solid var(--primary-red);
+            border: 1px solid var(--border-light);
+        }
+
+        .positions-table tbody tr {
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .positions-table tbody tr:hover {
+            background: var(--light-bg);
+            transform: scale(1.01);
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.1);
+        }
+
+        .positions-table tbody td {
+            padding: 20px 18px;
+            color: var(--text-dark);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.9rem;
+        }
+
+        .positions-table tbody td:first-child {
+            border-left: 3px solid var(--primary-red);
+            border-radius: 10px 0 0 10px;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        /* Form Section */
+        .form-section {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
+            padding: 80px 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto 0;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--black);
+            font-size: 1rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 18px;
+            background: var(--light-bg);
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .form-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-email {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(230, 57, 70, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            padding: 50px 20px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .footer-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .footer-description {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-buttons {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .nav-btn {
+                font-size: 0.85rem;
+                padding: 8px 16px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .positions-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .positions-table thead {
+                display: none;
+            }
+
+            .positions-table tbody tr {
+                display: block;
+                margin-bottom: 20px;
+                border: 2px solid var(--primary-red);
+                border-radius: 10px;
+            }
+
+            .positions-table tbody td {
+                display: block;
+                text-align: left;
+                padding: 12px 18px;
+                border: none !important;
+            }
+
+            .positions-table tbody td:first-child {
+                background: var(--primary-red);
+                color: var(--white);
+                font-size: 1.1rem;
+                padding: 18px;
+                border-radius: 8px 8px 0 0 !important;
+            }
+
+            .positions-table tbody td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 700;
+                color: var(--primary-red);
+                margin-bottom: 5px;
+                font-size: 0.85rem;
+            }
+
+            .positions-table tbody td:first-child::before {
+                display: none;
+            }
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">Jualin Aja</div>
+            <div class="nav-buttons">
+                <a href="https://sites.google.com/view/jualinaja-store/proposal" class="nav-btn" target="_blank">Proposal Bisnis</a>
+                <a href="https://sites.google.com/view/jualinaja-store/jualin-aja" class="nav-btn" target="_blank">Company Profile</a>
+                <a href="https://sites.google.com/view/jualinaja-store/kelas" class="nav-btn" target="_blank">Kelas Jualin Aja</a>
+                <a href="https://sites.google.com/view/jualinaja-store/layanan" class="nav-btn" target="_blank">Layanan Digital</a>
+                <a href="https://sites.google.com/view/jualinaja-store/market" class="nav-btn" target="_blank">Market</a>
+                <a href="#form" class="nav-btn" style="border-color: var(--primary-red); color: var(--primary-red);">Daftar Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Jualin Aja Freelancer Community</h1>
+                <p class="hero-subtitle">Belajar. Berkolaborasi. Berkarya Bareng.</p>
+                <a href="#form" class="cta-button">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Tentang Komunitas</h2>
+            <p class="section-description">
+                Jualin Aja Freelancer Community adalah wadah bagi kreator muda, mahasiswa, dan freelancer untuk berkembang melalui proyek digital nyata. Anggota komunitas bukan hanya freelancer lepas, tapi bagian tim inti Jualin Aja, ikut membangun ekosistem digital, kelas, dan layanan kreatif untuk UMKM dan brand lokal.
+            </p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Benefit Bergabung</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-category">
+                        <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Pengembangan Karier
+                    </div>
+                    <ul class="benefit-list">
+                        <li>Pengalaman kerja nyata di proyek digital</li>
+                        <li>Sertifikat & portofolio profesional</li>
+                        <li>Akses pelatihan & mentoring</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-category">
+                        <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2V22M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Insentif & Penghasilan
+                    </div>
+                    <ul class="benefit-list">
+                        <li>Kontrak kerja paruh waktu</li>
+                        <li>Fee per proyek & komisi</li>
+                        <li>Peluang jadi tim tetap</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-category">
+                        <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13M16 3.13C16.8604 3.3503 17.623 3.8507 18.1676 4.55231C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89317 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88M13 7C13 9.20914 11.2091 11 9 11C6.79086 11 5 9.20914 5 7C5 4.79086 6.79086 3 9 3C11.2091 3 13 4.79086 13 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Networking Profesional
+                    </div>
+                    <ul class="benefit-list">
+                        <li>Tim lintas bidang</li>
+                        <li>Koneksi mentor & praktisi</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-category">
+                        <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5M12 12H15M12 16H15M9 12H9.01M9 16H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Struktur Jelas
+                    </div>
+                    <ul class="benefit-list">
+                        <li>Deskripsi kerja detail</li>
+                        <li>Kontrak 3–6 bulan</li>
+                        <li>Evaluasi resmi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Positions Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Posisi yang Dibuka</h2>
+
+            <table class="positions-table">
+                <thead>
+                    <tr>
+                        <th>Posisi</th>
+                        <th>Job Desk</th>
+                        <th>Kriteria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Posisi">Digital Marketing Lead</td>
+                        <td data-label="Job Desk">Strategi kampanye digital, analisis performa</td>
+                        <td data-label="Kriteria">Paham marketing, kreatif, analisa data</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Content Creator</td>
+                        <td data-label="Job Desk">Ide konten, caption, naskah promosi</td>
+                        <td data-label="Kriteria">Jago menulis, storytelling</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Desainer Grafis</td>
+                        <td data-label="Job Desk">Desain materi promosi & konten visual</td>
+                        <td data-label="Kriteria">Canva/Figma/Adobe</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Videografer / Editor</td>
+                        <td data-label="Job Desk">Produksi & editing video konten</td>
+                        <td data-label="Kriteria">Premiere/CapCut, peka visual</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Host / MC</td>
+                        <td data-label="Job Desk">Bawakan event & webinar</td>
+                        <td data-label="Kriteria">Percaya diri, komunikatif</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Community Coordinator</td>
+                        <td data-label="Job Desk">Kelola anggota & program engagement</td>
+                        <td data-label="Kriteria">Suka interaksi, terorganisir</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Seller Support</td>
+                        <td data-label="Job Desk">Dampingi seller, setup toko</td>
+                        <td data-label="Kriteria">Ramah, paham marketplace</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Trainer / Mentor</td>
+                        <td data-label="Job Desk">Ajar kelas & berbagi praktik</td>
+                        <td data-label="Kriteria">Ahli bidang, komunikatif</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Finance & Ops</td>
+                        <td data-label="Job Desk">Catat keuangan & laporan</td>
+                        <td data-label="Kriteria">Teliti, paham spreadsheet</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Customer Support</td>
+                        <td data-label="Job Desk">Layani pertanyaan anggota</td>
+                        <td data-label="Kriteria">Ramah, multitasking</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">HR Assistant</td>
+                        <td data-label="Job Desk">Kelola rekrutmen & pelatihan</td>
+                        <td data-label="Kriteria">Paham HR, teliti</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Posisi">Content Reviewer</td>
+                        <td data-label="Job Desk">Cek konten sebelum tayang</td>
+                        <td data-label="Kriteria">Teliti, peka estetika</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="form" class="form-section">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--white);">Cara Bergabung</h2>
+            <p class="section-description" style="color: rgba(255, 255, 255, 0.9);">
+                Isi formulir dan kirim via WhatsApp atau Email
+            </p>
+
+            <div class="form-container">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Nama Lengkap *</label>
+                        <input type="text" id="name" name="name" class="form-input" required placeholder="Nama lengkap">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="position">Posisi yang Diminati *</label>
+                        <select id="position" name="position" class="form-select" required>
+                            <option value="">Pilih posisi...</option>
+                            <option value="Digital Marketing Lead">Digital Marketing Lead</option>
+                            <option value="Content Creator">Content Creator</option>
+                            <option value="Desainer Grafis">Desainer Grafis</option>
+                            <option value="Videografer / Editor">Videografer / Editor</option>
+                            <option value="Host / MC">Host / MC</option>
+                            <option value="Community Coordinator">Community Coordinator</option>
+                            <option value="Seller Support">Seller Support</option>
+                            <option value="Trainer / Mentor">Trainer / Mentor</option>
+                            <option value="Finance & Ops">Finance & Ops</option>
+                            <option value="Customer Support">Customer Support</option>
+                            <option value="HR Assistant">HR Assistant</option>
+                            <option value="Content Reviewer">Content Reviewer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email *</label>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Nomor HP *</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required placeholder="08xxxxxxxxxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="portfolio">Portfolio / CV (Link)</label>
+                        <input type="url" id="portfolio" name="portfolio" class="form-input" placeholder="https://...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">Ceritakan Tentang Diri Anda</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Pengalaman, motivasi..."></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="form-button btn-whatsapp" onclick="sendToWhatsApp()">
+                            Kirim via WhatsApp
+                        </button>
+                        <button type="button" class="form-button btn-email" onclick="sendToEmail()">
+                            Kirim via Email
+                        </button>
+                    </div>
+
+                    <div class="success-message" id="successMessage">
+                        Data berhasil disiapkan! Silakan lanjutkan pengiriman.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h2 class="footer-title">Mulai Perjalananmu Sekarang</h2>
+            <p class="footer-description">
+                Ini bukan sekadar komunitas — ini awal perjalanan kariermu di dunia digital. Bersama Jualin Aja, belajar dari proyek nyata, bangun portofolio profesional, dan jadi bagian tim kreatif yang tumbuh bareng.
+            </p>
+
+            <a href="#form" class="cta-button">Daftar Sekarang</a>
+
+            <p style="margin-top: 50px; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
+                &copy; 2025 Jualin Aja Freelancer Community. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function getFormData() {
+            const name = document.getElementById('name').value;
+            const position = document.getElementById('position').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const portfolio = document.getElementById('portfolio').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !position || !email || !phone) {
+                alert('Mohon lengkapi semua field yang wajib diisi (*)');
+                return null;
+            }
+
+            return {
+                name,
+                position,
+                email,
+                phone,
+                portfolio,
+                message
+            };
+        }
+
+        function sendToWhatsApp() {
+            const formData = getFormData();
+            if (!formData) return;
+
+            const text = `*PENDAFTARAN JUALIN AJA FREELANCER COMMUNITY*
+
+Nama: ${formData.name}
+Posisi: ${formData.position}
+Email: ${formData.email}
+No. HP: ${formData.phone}
+Portfolio/CV: ${formData.portfolio || '-'}
+
+Tentang Diri:
+${formData.message || '-'}`;
+
+            const whatsappNumber = '6285147174926';
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+            document.getElementById('successMessage').classList.add('show');
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                document.getElementById('registrationForm').reset();
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.remove('show');
+                }, 3000);
+            }, 500);
+        }
+
+        function sendToEmail() {
+            const formData = getFormData();
+            if (!formData) return;
+
+            const subject = encodeURIComponent('Pendaftaran Jualin Aja Freelancer Community');
+            const body = encodeURIComponent(`PENDAFTARAN JUALIN AJA FREELANCER COMMUNITY
+
+Nama: ${formData.name}
+Posisi: ${formData.position}
+Email: ${formData.email}
+No. HP: ${formData.phone}
+Portfolio/CV: ${formData.portfolio || '-'}
+
+Tentang Diri:
+${formData.message || '-'}`);
+
+            const mailtoURL = `mailto:halo.jualinaja@gmail.com?subject=${subject}&body=${body}`;
+
+            document.getElementById('successMessage').classList.add('show');
+            setTimeout(() => {
+                window.location.href = mailtoURL;
+                document.getElementById('registrationForm').reset();
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.remove('show');
+                }, 3000);
+            }, 500);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
